@@ -1,14 +1,12 @@
 import '../styles/globals.css';
-import { SessionProvider } from 'next-auth/react';
-import { RecoilRoot } from 'recoil';
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+import React from 'react';
+import { UserContextProvider } from '../utils/useUser';
+function MyApp({ Component, pageProps }) {
   return (
-    <SessionProvider session={session}>
-      <RecoilRoot>
-        <Component {...pageProps} />
-      </RecoilRoot>
-    </SessionProvider>
+    <UserContextProvider>
+      <Component {...pageProps} />
+    </UserContextProvider>
   );
 }
 
